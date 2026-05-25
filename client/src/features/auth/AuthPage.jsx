@@ -28,7 +28,7 @@ export default function AuthPage() {
       toast.success('Session secured');
       navigate(payload.user.role === 'admin' ? '/admin' : '/account');
     } catch {
-      toast.error('API unavailable. Use demo access while backend .env is configured.');
+      toast.error('Unable to sign in. Please check your credentials or try again later.');
     }
   };
 
