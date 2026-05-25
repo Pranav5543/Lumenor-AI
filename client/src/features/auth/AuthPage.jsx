@@ -31,14 +31,7 @@ export default function AuthPage() {
       toast.error('API unavailable. Use demo access while backend .env is configured.');
     }
   };
-  const demoAccess = (role) => {
-    dispatch(setCredentials({
-      accessToken: `demo-${role}-token`,
-      user: { id: `demo-${role}`, name: role === 'admin' ? 'NOIR Admin' : 'Private Client', email: `${role}@noirthread.example`, role }
-    }));
-    toast.success(`${role === 'admin' ? 'Admin' : 'Client'} demo session ready`);
-    navigate(role === 'admin' ? '/admin' : '/account');
-  };
+
 
   return (
     <>
@@ -51,10 +44,6 @@ export default function AuthPage() {
           <Field label="Email" error={errors.email?.message} input={register('email')} />
           <Field label="Password" type="password" error={errors.password?.message} input={register('password')} />
           <button disabled={isSubmitting} className="mt-6 w-full bg-noir-accent py-4 font-semibold text-noir-bg">Continue securely</button>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <button type="button" onClick={() => demoAccess('customer')} className="border border-noir-border py-3 text-sm text-noir-muted">Client demo</button>
-            <button type="button" onClick={() => demoAccess('admin')} className="border border-noir-border py-3 text-sm text-noir-muted">Admin demo</button>
-          </div>
           <button type="button" className="mt-4 w-full border border-noir-border py-4 text-noir-muted">Forgot password</button>
         </form>
       </section>

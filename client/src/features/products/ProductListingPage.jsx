@@ -19,6 +19,10 @@ export default function ProductListingPage() {
     ? ['Featured', 'Trending', 'Atelier', 'Technical', 'Resort']
     : ['All', ...new Set(fallbackProducts.flatMap((product) => product.categories))];
 
+  useEffect(() => {
+    setCategory(collectionMode ? 'Featured' : 'All');
+  }, [collectionMode]);
+
   const filtered = useMemo(() => {
     return products
       .filter((product) => {
@@ -88,6 +92,3 @@ export default function ProductListingPage() {
     </>
   );
 }
-  useEffect(() => {
-    setCategory(collectionMode ? 'Featured' : 'All');
-  }, [collectionMode]);
