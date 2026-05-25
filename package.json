@@ -1,0 +1,29 @@
+{
+  "name": "noirthread",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NOIRTHREAD production-grade MERN fashion commerce platform.",
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "dev": "concurrently \"node scripts/run-pnpm.cjs --filter @noirthread/client dev\" \"node scripts/run-pnpm.cjs --filter @noirthread/server dev\"",
+    "dev:client": "node scripts/run-pnpm.cjs --filter @noirthread/client dev",
+    "dev:server": "node scripts/run-pnpm.cjs --filter @noirthread/server dev",
+    "build": "node scripts/run-pnpm.cjs --filter @noirthread/client build",
+    "test": "node scripts/run-pnpm.cjs --filter @noirthread/client test && node scripts/run-pnpm.cjs --filter @noirthread/server test",
+    "test:client": "node scripts/run-pnpm.cjs --filter @noirthread/client test",
+    "test:server": "node scripts/run-pnpm.cjs --filter @noirthread/server test",
+    "lint": "node scripts/run-pnpm.cjs --filter @noirthread/client lint",
+    "seed": "node scripts/run-pnpm.cjs --filter @noirthread/server seed",
+    "email:test": "node scripts/run-pnpm.cjs --filter @noirthread/server email:test"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
