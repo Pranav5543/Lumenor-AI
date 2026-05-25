@@ -7,6 +7,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
+    timeout: 5000,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.accessToken;
       if (token) headers.set('authorization', `Bearer ${token}`);

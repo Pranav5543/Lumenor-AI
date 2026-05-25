@@ -29,7 +29,10 @@ export default function CheckoutPage() {
       return;
     }
     toast.loading('Authorizing payment...', { id: 'checkout' });
-    setTimeout(() => navigate('/order-success/NT-2026-0427'), 500);
+    setTimeout(() => {
+      toast.success('Payment authorized', { id: 'checkout' });
+      navigate('/order-success/NT-2026-0427');
+    }, 500);
   };
 
   const applyCoupon = () => {
